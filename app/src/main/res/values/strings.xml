@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Link open</string>
+    <string name="action_settings">Settings</string>
+    <string name="linkis">Opened link is</string>
+    <string name="openl">Open</string>
+    <string name="shrt">Short</string>
+    <string name="share">Share</string>
+</resources>
