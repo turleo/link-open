@@ -1,4 +1,4 @@
- name: Android CI
+name: Android CI
 
 on: [push]
 
@@ -14,12 +14,4 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Gradle
-      run: ./gradlew build
-  
-  notify:
-    uses = "appleboy/telegram-action@master"
-    secrets = [
-      "968517413:AAGSRwXAQJvh0z5UXsS6r1oECMqsK_ocJ_k",
-      "bm835_updates",
-    ]
-  
+      run: ./gradlew build  
