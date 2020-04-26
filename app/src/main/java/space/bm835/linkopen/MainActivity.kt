@@ -7,8 +7,8 @@ import android.os.AsyncTask
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
-import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.URL
@@ -16,7 +16,6 @@ import java.net.URLConnection
 
 
 class MainActivity : AppCompatActivity() {
-    var progress: ProgressBar? = null
     var urlText: TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         val share: Button = findViewById(R.id.button3)
         val open: Button = findViewById(R.id.button)
         val unshort: Button = findViewById(R.id.unshortButton)
-        progress = findViewById(R.id.loadingUnShort)
         urlText = findViewById(R.id.textView2)
 
         var url = ""
@@ -53,8 +51,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         unshort.setOnClickListener {
-            val task = RequestTask()
-            task.execute(RequestTaskParams(url, this))
+            if (url.startsWith("https://") || android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.P) {
+                val task = RequestTask()
+                task.execute(RequestTaskParams(url, this))
+            } else {
+                Toast.makeText(
+                    applicationContext,
+                    R.string.http_error,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 

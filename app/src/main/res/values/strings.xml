@@ -6,4 +6,5 @@
     <string name="shrt">Short</string>
     <string name="share">Share</string>
     <string name="unShort">Unshort</string>
+    <string name="http_error">Sorry, we can\'t make this link longer</string>
 </resources>
